@@ -9,8 +9,12 @@ import toastr from 'toastr';
 class CoursesPage extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
 
+        this.state = {
+            deleting: false
+        };
+
+        this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
         this.deleteCourse = this.deleteCourse.bind(this);
     }
 
@@ -22,12 +26,20 @@ class CoursesPage extends React.Component {
     }
 
     deleteCourse(event){
+        if (this.state.deleting)
+            return;
+
         const deleteCourseId = event.currentTarget.value;
+
+        this.setState({deleting: true});
+
         this.props.actions.deleteCourse(deleteCourseId)
             .then(() => {
+                this.setState({deleting: false});
                 toastr.success('Course deleted');
             })
             .catch(error => {
+                this.setState({deleting: false});
                 toastr.error(error);
             });
     }
