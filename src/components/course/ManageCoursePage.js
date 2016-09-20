@@ -13,11 +13,20 @@ export class ManageCoursePage extends React.Component {
         this.state = {
             course: Object.assign({}, props.course),
             errors: {},
-            saving: false
+            saving: false,
+            dirty: false
         };
 
         this.updateCourseState = this.updateCourseState.bind(this);
         this.saveCourse = this.saveCourse.bind(this);
+    }
+
+    componentDidMount() {
+        this.context.router.setRouteLeaveHook(this.props.route, () => {
+            if (this.state.dirty) {
+                return 'Your work is not saved! Are you sure you want to leave?';
+            }
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -28,6 +37,7 @@ export class ManageCoursePage extends React.Component {
     }
 
     updateCourseState(event) {
+        this.setState({dirty: true});
         const field = event.target.name;
         let course = this.state.course;
         course[field] = event.target.value;
@@ -55,7 +65,7 @@ export class ManageCoursePage extends React.Component {
             return;
         }
 
-        this.setState({saving: true});
+        this.setState({saving: true, dirty: false});
 
         this.props.actions.saveCourse(this.state.course)
             .then(() => this.redirect())
@@ -88,7 +98,8 @@ export class ManageCoursePage extends React.Component {
 ManageCoursePage.propTypes = {
     course: PropTypes.object.isRequired,
     authors: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    route: React.PropTypes.object
 };
 
 //Pull in the React Router context so router is available on this.context.router.
@@ -123,4 +134,7 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
+
+
