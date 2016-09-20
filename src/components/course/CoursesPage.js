@@ -21,11 +21,15 @@ class CoursesPage extends React.Component {
     courseRow(course, index) {
         return <div key={index}>{course.title}</div>;
     }
+
     redirectToAddCoursePage() {
         browserHistory.push('/course');
     }
 
-    deleteCourse(event){
+    deleteCourse(event) {
+        if (!confirm('Are you sure you want to delete the course?'))
+            return;
+
         if (this.state.deleting)
             return;
 
@@ -52,8 +56,8 @@ class CoursesPage extends React.Component {
                 <input type="submit"
                        value="Add Course"
                        className="btn btn-primary"
-                       onClick={this.redirectToAddCoursePage} />
-                <CourseList courses={courses} onDelete={this.deleteCourse} />
+                       onClick={this.redirectToAddCoursePage}/>
+                {courses.length === 0 ? null : <CourseList courses={courses} onDelete={this.deleteCourse}/> }
             </div>
         );
     }
