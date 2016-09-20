@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
+import TextInputMask from '../common/TextInputMask';
 import SelectInput from '../common/SelectInput';
 
 const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
@@ -28,7 +29,9 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
                 onChange={onChange}
                 error={errors.category}/>
 
-            <TextInput
+            <TextInputMask
+                mask="11:11"
+                size={5}
                 name="length"
                 label="Length"
                 value={course.length}

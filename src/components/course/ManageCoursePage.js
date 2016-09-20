@@ -53,6 +53,16 @@ export class ManageCoursePage extends React.Component {
             formIsValid = false;
         }
 
+        if (this.state.course.category.length < 5) {
+            errors.category = 'Category must be at least 5 characters.';
+            formIsValid = false;
+        }
+
+        if (this.state.course.length.length == 0) {
+            errors.length = "Length can't must be empty.";
+            formIsValid = false;
+        }
+
         this.setState({errors: errors});
         return formIsValid;
     }
