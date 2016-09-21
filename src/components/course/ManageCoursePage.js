@@ -30,6 +30,10 @@ export class ManageCoursePage extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if(nextProps.course.id == ''){
+            this.context.router.push('/notFound');
+        }
+
         if (this.props.course.id != nextProps.course.id) {
             // Necessary to populate form when existing course is loaded directly.
             this.setState({course: Object.assign({}, nextProps.course)});
@@ -130,6 +134,9 @@ function mapStateToProps(state, ownProps) {
 
     if (courseId && state.courses.length > 0) {
         course = getCourseById(state.courses, courseId);
+        if (course == null) {
+            course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+        }
     }
 
     return {
