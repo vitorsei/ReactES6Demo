@@ -30,7 +30,7 @@ export class ManageCoursePage extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.course.id == ''){
+        if (nextProps.course.id == 'notFound') {
             this.context.router.push('/notFound');
         }
 
@@ -135,7 +135,7 @@ function mapStateToProps(state, ownProps) {
     if (courseId && state.courses.length > 0) {
         course = getCourseById(state.courses, courseId);
         if (course == null) {
-            course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+            course = {id: 'notFound'};
         }
     }
 
