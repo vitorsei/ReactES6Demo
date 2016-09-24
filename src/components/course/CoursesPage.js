@@ -68,11 +68,20 @@ CoursesPage.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
+
+function sortCourses(courses) {
+    let sortedCourses = Object.assign([], courses);
+    return sortedCourses.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase());
+}
+
 function mapStateToProps(state, ownProps) {
+
+    const sortedCourses = sortCourses(state.courses);
+
     //returns the properties that we would like to see exposed on our components
     return {
         // this will be accessed above as this.props.courses
-        courses: state.courses //comes from the rootReducer
+        courses: sortedCourses //comes from the rootReducer
     };
 }
 
