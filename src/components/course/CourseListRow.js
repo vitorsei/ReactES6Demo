@@ -9,7 +9,11 @@ const CourseListRow = ({course, onDelete}) => {
             <td>{course.authorId}</td>
             <td>{course.category}</td>
             <td>{course.length}</td>
-            <td><a href="#" onClick={onDelete}>Delete</a></td>
+            <td>
+                <button className="btn btn-danger btn-sm"  onClick={onDelete} value={course.id}>
+                    delete
+                </button>
+            </td>
         </tr>
     );
 };
