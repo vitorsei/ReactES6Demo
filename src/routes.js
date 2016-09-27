@@ -10,7 +10,6 @@ import ManageAuthorPage from "./components/author/ManageAuthorPage";
 import AuthorPage from "./components/author/AuthorPage"; //eslint-disable-line import/no-named-as-default
 //eslint-disable-line import/no-named-as-default
 
-
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={HomePage}/>
