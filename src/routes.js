@@ -6,9 +6,8 @@ import AboutPage from "./components/about/AboutPage";
 import CoursesPage from "./components/course/CoursesPage";
 import NotFoundPage from "./components/notFound/NotFoundPage";
 import AuthorPage from "./components/author/AuthorPage";
-import ManageCoursePage from "./components/course/ManageCoursePage";
+import ManageCoursePage from "./components/course/ManageCoursePage"; //eslint-disable-line import/no-named-as-default
 import ManageAuthorPage from "./components/author/ManageAuthorPage"; //eslint-disable-line import/no-named-as-default
-//eslint-disable-line import/no-named-as-default
 
 export default (
     <Route path="/" component={App}>
