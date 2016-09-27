@@ -5,9 +5,9 @@ import HomePage from "./components/home/HomePage";
 import AboutPage from "./components/about/AboutPage";
 import CoursesPage from "./components/course/CoursesPage";
 import NotFoundPage from "./components/notFound/NotFoundPage";
+import AuthorPage from "./components/author/AuthorPage";
 import ManageCoursePage from "./components/course/ManageCoursePage";
-import ManageAuthorPage from "./components/author/ManageAuthorPage";
-import AuthorPage from "./components/author/AuthorPage"; //eslint-disable-line import/no-named-as-default
+import ManageAuthorPage from "./components/author/ManageAuthorPage"; //eslint-disable-line import/no-named-as-default
 //eslint-disable-line import/no-named-as-default
 
 export default (
