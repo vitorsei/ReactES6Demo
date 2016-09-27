@@ -1,7 +1,7 @@
 // This component handles the App template used on every page.
-import React, {PropTypes} from 'react';
-import Header from './common/Header';
-import {connect} from 'react-redux';
+import React, {PropTypes} from "react";
+import Header from "./common/Header";
+import {connect} from "react-redux";
 
 class App extends React.Component {
     render() {
@@ -19,7 +19,8 @@ class App extends React.Component {
 App.propTypes = {
     children: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
-    courses: PropTypes.array.isRequired
+    courses: PropTypes.array.isRequired,
+    authors: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
