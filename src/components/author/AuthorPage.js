@@ -23,7 +23,25 @@ class AuthorPage extends React.Component {
     }
 
     deleteAuthor(event) {
+        if (!confirm('Are you sure you want to delete the author?'))
+            return;
 
+        if (this.state.deleting)
+            return;
+
+        const deleteAuthorId = event.currentTarget.value;
+
+        this.setState({deleting: true});
+
+        this.props.actions.deleteAuthor(deleteAuthorId)
+            .then(() => {
+                this.setState({deleting: false});
+                toastr.success('Author deleted');
+            })
+            .catch(error => {
+                this.setState({deleting: false});
+                toastr.error(error);
+            });
     }
 
     render() {

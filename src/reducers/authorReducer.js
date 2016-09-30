@@ -18,6 +18,14 @@ export default function authorReducer(state = initialState.authors, action) {
                 Object.assign({}, action.author)
             ];
 
+        case types.DELETE_AUTHOR_SUCCESS: {
+            let index = state.findIndex(author => author.id !== action.authorId);
+            return [
+                ...state.slice(0, index),
+                ...state.slice(index + 1)
+            ];
+        }
+
         default:
             return state;
     }
