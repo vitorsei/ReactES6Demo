@@ -64,9 +64,17 @@ AuthorPage.propTypes = {
     actions: React.PropTypes.object.isRequired
 };
 
+function sortAuthors(authors) {
+    let sortedAuthors = Object.assign([], authors);
+    return sortedAuthors.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase());
+}
+
 function mapStateToProps(state, ownProps) {
+    
+    const sortedAuthors = sortAuthors(state.authors);
+    
     return {
-        authors: state.authors
+        authors: sortedAuthors
     };
 }
 
