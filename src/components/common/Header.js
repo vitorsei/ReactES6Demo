@@ -4,15 +4,16 @@ import LoadingDots from './LoadingDots';
 
 const Header = ({loading, courses, authors}) => {
     return (
-        <nav>
-            <IndexLink to="/" activeClassName="active">Home</IndexLink>
-            {" | "}
-            <Link to="/authors" activeClassName="active">Authors ({authors.length})</Link>
-            {" | "}
-            <Link to="/courses" activeClassName="active">Courses ({courses.length})</Link>
-            {" | "}
-            <Link to="/about" activeClassName="active">About</Link>
-            {loading && <LoadingDots interval={100} dots={20}/>}
+        <nav className="navbar navbar-default">
+            <div className="container-fluid">
+                <ul className="nav navbar-nav">
+                    <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+                    <li><Link to="/courses" activeClassName="active">Courses ({courses.length})</Link></li>
+                    <li><Link to="/authors" activeClassName="active">Authors ({authors.length})</Link></li>
+                    <li><Link to="/about" activeClassName="active">About</Link></li>
+                    {loading && <LoadingDots interval={100} dots={20}/>}
+                </ul>
+            </div>
         </nav>
     );
 };
