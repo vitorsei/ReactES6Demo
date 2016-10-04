@@ -1,4 +1,5 @@
 import AuthorApi from '../api/mockAuthorApi';
+import CourseApi from '../api/mockCourseApi';
 import * as types from './actionTypes';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
@@ -45,11 +46,20 @@ export function saveAuthor(author) {
 export function deleteAuthor(authorId) {
     return function (dispatch) {
         dispatch(beginAjaxCall());
-        return AuthorApi.deleteAuthor(authorId).then(() => {
-            dispatch(deleteAuthorSuccess(authorId));
-        }).catch(error => {
-            dispatch(ajaxCallError(error));
-            throw(error);
-        });
+        return CourseApi.getCourses(authorId).then(courses =>
+            {
+                if (courses.length  > 0) {
+                    throw ('There are courses associated with this author');
+                }
+                else{
+                    return AuthorApi.deleteAuthor(authorId).then(() => {
+                        dispatch(deleteAuthorSuccess(authorId));
+                    }).catch(error => {
+                        dispatch(ajaxCallError(error));
+                        throw(error);
+                    });
+                }
+            }
+        );
     };
 }
