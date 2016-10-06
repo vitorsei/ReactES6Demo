@@ -6,7 +6,7 @@ import CourseList from './CourseList';
 import  {browserHistory} from 'react-router';
 import toastr from 'toastr';
 
-class CoursesPage extends React.Component {
+export class CoursesPage extends React.Component {
     constructor(props, context) {
         super(props, context);
 
@@ -27,6 +27,7 @@ class CoursesPage extends React.Component {
     }
 
     deleteCourse(event) {
+
         if (!confirm('Are you sure you want to delete the course?'))
             return;
 
