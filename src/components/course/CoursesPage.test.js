@@ -5,8 +5,10 @@ import {CoursesPage} from './CoursesPage';
 import sinon from 'sinon';
 
 describe('Courses Page', () => {
-    it('sets deleting state when trying to delete course', () => {
-        const props = {
+    let props = {};
+
+    beforeEach(()=>{
+        props = {
             actions: {
                 deleteCourse: () => {
                     return Promise.resolve();
@@ -16,6 +18,10 @@ describe('Courses Page', () => {
                 {id: '1', watchHref: '', title: 'A', authorId: '', length: '', category: ''}
             ]
         };
+    });
+
+    it('sets deleting state when trying to delete course', () => {
+
         const wrapper = mount(<CoursesPage {...props} />);
         const deleteButton = wrapper.find('button');
 
@@ -32,26 +38,20 @@ describe('Courses Page', () => {
     });
 
     it('calls redirectToAddCoursePage after adding course', () => {
+
         CoursesPage.prototype.redirectToAddCoursePage =  () => {
             return Promise.resolve();
         };
 
         let spy = sinon.spy(CoursesPage.prototype, 'redirectToAddCoursePage');
 
-        const props = {
-            actions: {
-                deleteCourse: () => {
-                    return Promise.resolve();
-                }
-            },
-            courses: [
-                {id: '1', watchHref: '', title: 'A', authorId: '', length: '', category: ''}
-            ]
-        };
         const wrapper = mount(<CoursesPage {...props} />);
         const addCourse = wrapper.find('input');
+
         expect(addCourse.prop('type')).toBe('submit');
+
         addCourse.simulate('click');
+
         expect(spy.callCount).toBe(1);
     });
 });
