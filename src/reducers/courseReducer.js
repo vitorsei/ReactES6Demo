@@ -21,10 +21,12 @@ export default function courseReducer(state = initialState.courses, action) {
 
         case types.DELETE_COURSE_SUCCESS: {
             let index = state.findIndex(course => course.id == action.courseId);
-            return [
-                ...state.slice(0, index),
-                ...state.slice(index + 1)
-            ];
+            if (index >= 0) {
+                return [
+                    ...state.slice(0, index),
+                    ...state.slice(index + 1)
+                ];
+            }
         }
 
         default:
