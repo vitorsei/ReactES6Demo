@@ -49,6 +49,7 @@ export function deleteAuthor(authorId) {
         return CourseApi.getCourses(authorId).then(courses =>
             {
                 if (courses.length  > 0) {
+                    dispatch(ajaxCallError());
                     throw ('There are courses associated with this author');
                 }
                 else{

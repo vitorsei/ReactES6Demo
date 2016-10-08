@@ -44,13 +44,12 @@ describe('Async Actions', () => {
             {type: types.LOAD_AUTHORS_SUCCESS, body: {authors: [{firstName: 'Vitor', lastName: 'Iwamura'}]}}
         ];
 
-        const store = mockStore({courses: [{id: '1'}]}, expectedActions);
-        store.dispatch(authorActions.deleteAuthor('1')).then(() => {
-            const actions = store.getActions();
-            expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
-            expect(actions[1].type).toEqual(types.DELETE_AUTHOR_SUCCESS);
-            done();
+        const store = mockStore({courses: [{id: ''}]}, expectedActions);
+        store.dispatch(authorActions.deleteAuthor(''))
+            .then(() => {})
+            .catch(error => {
+                expect(error).toEqual('There are courses associated with this author');
         });
-
+        done();
     });
 });
