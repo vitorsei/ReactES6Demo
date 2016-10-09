@@ -27,6 +27,7 @@ export default function courseReducer(state = initialState.courses, action) {
                     ...state.slice(index + 1)
                 ];
             }
+            return state;
         }
 
         default:

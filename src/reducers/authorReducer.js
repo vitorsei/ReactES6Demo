@@ -26,6 +26,8 @@ export default function authorReducer(state = initialState.authors, action) {
                     ...state.slice(index + 1)
                 ];
             }
+
+            return state;
         }
 
         default:
