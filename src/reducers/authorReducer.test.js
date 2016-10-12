@@ -50,7 +50,7 @@ describe('Author Reducer', () => {
         const initialState = [
             {id:'1', firstName: 'A', lastName: 'B'},
             {id:'2', firstName: 'C', lastName: 'D'},
-            {id:'3', firstName: 'E', lastName: 'F'},
+            {id:'3', firstName: 'E', lastName: 'F'}
         ];
 
         const authorId = '2';
@@ -68,7 +68,7 @@ describe('Author Reducer', () => {
         const initialState = [
             {id:'1', firstName: 'A', lastName: 'B'},
             {id:'2', firstName: 'C', lastName: 'D'},
-            {id:'3', firstName: 'E', lastName: 'F'},
+            {id:'3', firstName: 'E', lastName: 'F'}
         ];
 
 
