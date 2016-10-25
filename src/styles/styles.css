@@ -13,4 +13,20 @@ a.active {
 
 nav {
   padding-top: 20px;
+
+}
+
+nav.navbar.navbar-default{
+    background-color: #222222;
+    border-color: #121212;
+}
+
+nav.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+nav.navbar-default .navbar-nav > li > a:hover,
+nav.navbar-default .navbar-nav > li > a:focus {
+    color: #ffffff;
+    background-color: #090909;
 }
