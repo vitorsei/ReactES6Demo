@@ -17,7 +17,7 @@ describe('Async Actions', () => {
         // Here's an example call to nock.
         // nock('http://example.com/')
         //   .get('/authors')
-        //   .reply(200, { body: { author: [{ id: 1, firstName: 'Cory', lastName: 'House'}] }});
+        //   .reply(200, { body: { author: [{ id: 1, firstName: 'Vitor', lastName: 'Seiji'}] }});
 
         const expectedActions = [
             {type: types.BEGIN_AJAX_CALL},
@@ -37,7 +37,7 @@ describe('Async Actions', () => {
         // Here's an example call to nock.
         // nock('http://example.com/')
         //   .get('/authors')
-        //   .reply(200, { body: { author: [{ id: 1, firstName: 'Cory', lastName: 'House'}] }});
+        //   .reply(200, { body: { author: [{ id: 1, firstName: 'Vitor', lastName: 'Seiji'}] }});
 
         const expectedActions = [
             {type: types.BEGIN_AJAX_CALL},
