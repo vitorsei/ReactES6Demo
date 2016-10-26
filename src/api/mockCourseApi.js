@@ -5,44 +5,52 @@ import delay from './delay';
 // All calls return promises.
 const courses = [
     {
-        id: "react-flux-building-applications",
-        title: "Building Applications in React and Flux",
-        watchHref: "http://www.pluralsight.com/courses/react-flux-building-applications",
-        authorId: "vitor-seiji",
+        id: "mind-reading",
+        title: "Mind Reading",
+        watchHref: "https://en.wikipedia.org/wiki/Jean_Grey",
+        authorId: "jean-gray",
         length: "05:08",
-        category: "JavaScript"
+        category: "Mind Power"
     },
     {
-        id: "clean-code",
-        title: "Clean Code: Writing Code for Humans",
-        watchHref: "http://www.pluralsight.com/courses/writing-clean-code-humans",
-        authorId: "vitor-seiji",
+        id: "telekinesis",
+        title: "Telekinesis",
+        watchHref: "https://en.wikipedia.org/wiki/Jean_Grey",
+        authorId: "jean-gray",
+        length: "05:08",
+        category: "Mind Power"
+    },
+    {
+        id: "Never-Get-Hurt-Again",
+        title: "Never Get Hurt Again",
+        watchHref: "https://en.wikipedia.org/wiki/Wolverine_(character)",
+        authorId: "james-howlett",
         length: "03:10",
-        category: "Software Practices"
+        category: "Badass"
     },
     {
-        id: "architecture",
-        title: "Architecting Applications for the Real World",
-        watchHref: "http://www.pluralsight.com/courses/architecting-applications-dotnet",
-        authorId: "vitor-seiji",
+        id: "bending-steel",
+        title: "Bending Steel",
+        watchHref: "https://en.wikipedia.org/wiki/Magneto_(comics)",
+        authorId: "erik-magnus",
         length: "02:52",
-        category: "Software Architecture"
+        category: "First Class"
     },
     {
-        id: "career-reboot-for-developer-mind",
-        title: "Becoming an Outlier: Reprogramming the Developer Mind",
-        watchHref: "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
-        authorId: "vitor-seiji",
+        id: "fighting-global-warming",
+        title: "Fighting Global Warming",
+        watchHref: "https://en.wikipedia.org/wiki/Iceman_(comics)",
+        authorId: "bobby-drake",
         length: "02:30",
-        category: "Career"
+        category: "Basic"
     },
     {
-        id: "web-components-shadow-dom",
-        title: "Web Component Fundamentals",
-        watchHref: "http://www.pluralsight.com/courses/web-components-shadow-dom",
-        authorId: "vitor-seiji",
+        id: "handling-heavy-traffic",
+        title: "Handling Heavy Traffic",
+        watchHref: "https://en.wikipedia.org/wiki/Nightcrawler_(comics)",
+        authorId: "kurt-wagner",
         length: "05:10",
-        category: "HTML5"
+        category: "Essential"
     }
 ];
 
