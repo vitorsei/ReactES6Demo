@@ -42,7 +42,7 @@ const courses = [
         watchHref: "https://en.wikipedia.org/wiki/Iceman_(comics)",
         authorId: "bobby-drake",
         length: "02:30",
-        category: "Basic"
+        category: "Basics"
     },
     {
         id: "handling-heavy-traffic",
