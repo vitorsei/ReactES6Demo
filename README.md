@@ -7,6 +7,7 @@ An application that manages courses data
  - Redux
  - React Router
  - Babel
+ - Enzyme
  - Mocha
  - ESLint
  - Node.js
