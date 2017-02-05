@@ -2,6 +2,7 @@ import AuthorApi from '../api/mockAuthorApi';
 import CourseApi from '../api/mockCourseApi';
 import * as types from './actionTypes';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
+import { CALL_API } from '../middleware/auth';
 
 export function loadAuthorsSuccess(authors) {
     return {type: types.LOAD_AUTHORS_SUCCESS, authors};
@@ -19,15 +20,28 @@ export function deleteAuthorSuccess(authorId) {
     return {type: types.DELETE_AUTHOR_SUCCESS, authorId};
 }
 
+function fetchAuthors() {
+    return {
+        [CALL_API]: {
+            types: [ types.BEGIN_AJAX_CALL, types.LOAD_AUTHORS_SUCCESS ],
+            endpoint: 'authors',
+            authenticatedRequest: false
+        }
+    }
+}
+
 export function loadAuthors() {
     return dispatch => {
-        dispatch(beginAjaxCall());
-        return AuthorApi.getAllAuthors().then(authors => {
-            dispatch(loadAuthorsSuccess(authors));
-        }).catch(error => {
-            throw(error);
-        });
+        return dispatch(fetchAuthors())
     };
+    // return dispatch => {
+    //     dispatch(beginAjaxCall());
+    //     return AuthorApi.getAllAuthors().then(authors => {
+    //         dispatch(loadAuthorsSuccess(authors));
+    //     }).catch(error => {
+    //         throw(error);
+    //     });
+    // };
 }
 
 export function saveAuthor(author) {
