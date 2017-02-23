@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
-const jwt = require('express-jwt');
 const cors = require('cors');
-
-app.use(cors());
-app.use(express.static('public'));
-
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const localSignupStrategy = require('./server/passport/local-signup');
+const localLoginStrategy = require('./server/passport/local-login');
 
 const authors = [
     {
@@ -35,17 +34,17 @@ const authors = [
     }
 ];
 
-// Authentication middleware provided by express-jwt.
-// This middleware will check incoming requests for a valid
-// JWT on any routes that it is applied to.
+app.use(cors());
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
 
-const authCheck = jwt({
-    secret: 'bpnPTOrj4rRzS3O8VCWU42mFq2-ollKSqas8ZOtGfbD1flp__r6OOkU9Ill9HS4j',
-    // If your Auth0 client was created before Dec 6, 2016,
-    // uncomment the line below and remove the line above
-    // secret: new Buffer('AUTH0_SECRET', 'base64'),
-    audience: 'btqOmSQCe4cV3qU8peDSHaVbK14s7Y2B'
-});
+// load passport strategies
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
+
+const authCheckMiddleware = require('./authCheck');
+app.use('/api', authCheckMiddleware);
 
 app.get('/api/authors', (req, res) => {
     res.json(authors);
